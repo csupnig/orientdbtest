@@ -1,4 +1,4 @@
-package test;
+package orientdbtest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+import org.junit.Test;
 
 import com.gentics.api.lib.datasource.Datasource;
 import com.gentics.api.lib.datasource.DatasourceException;
@@ -19,14 +21,11 @@ import com.gentics.api.lib.resolving.Changeable;
 import com.gentics.api.lib.resolving.Resolvable;
 import com.gentics.api.portalnode.connector.PortalConnectorFactory;
 import com.gentics.cr.CRConfigUtil;
-import com.orientechnologies.orient.client.remote.OEngineRemote;
-import com.orientechnologies.orient.core.Orient;
-import com.orientechnologies.orient.core.db.document.ODatabaseDocumentPool;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
 
-public class test {
+public class OrientDBPerformanceTest {
 
 	//private static int anz = 2 * 1000 * 1000;
 	private static int anz = 10000;
@@ -34,7 +33,7 @@ public class test {
 	
 	private static final String[] perms = new String[]{"admin","soc","mar","emp","sal","cust","public","test"};
 	
-	private static final String[] names = new String[]{"Hans", "Luke", "Harri", "Peter", "Kopf", "Kässbauer", "Trobel", "Kunst"};
+	private static final String[] names = new String[]{"Hans", "Luke", "Harri", "Peter", "Kopf", "Kï¿½ssbauer", "Trobel", "Kunst"};
 	
 	private static CRConfigUtil conf;
 	
@@ -72,10 +71,8 @@ public class test {
 		
 	}
 	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	@Test
+	public void testOrientDBPerformance() {
 		init();
 		allCR += deleteTimeCR += deleteAllCR();
 		allOrient += deleteTimeOrient += deleteAllOrient();
