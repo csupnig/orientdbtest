@@ -1,4 +1,4 @@
-package test;
+package orientdbtest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
+import org.junit.Test;
 
 import com.gentics.api.lib.datasource.DatasourceException;
 import com.gentics.api.lib.datasource.WriteableDatasource;
@@ -22,13 +21,11 @@ import com.gentics.api.lib.resolving.Changeable;
 import com.gentics.api.lib.resolving.Resolvable;
 import com.gentics.api.portalnode.connector.PortalConnectorFactory;
 import com.gentics.cr.CRConfigUtil;
-import com.gentics.lib.db.DB;
-import com.gentics.lib.log.NodeLogger;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
 
-public class NorbertTest {
+public class OrientDBTest {
 
 	private static int addressesAnz = 100;
 	private static int companiesAnz = 10000;
@@ -36,7 +33,7 @@ public class NorbertTest {
 	
 	private static final String[] perms = new String[]{"admin","soc","mar","emp","sal","cust","public","test"};
 	
-	private static final String[] names = new String[]{"Hans", "Luke", "Harri", "Peter", "Kopf", "Kässbauer", "Trobel", "Kunst"};
+	private static final String[] names = new String[]{"Hans", "Luke", "Harri", "Peter", "Kopf", "Kï¿½ssbauer", "Trobel", "Kunst"};
 	
 	private static final String[] cities = new String[]{"Vienna", "Rome", "Amsterdam", "New York", "Berlin", "San Francisco", "Wels", "Prag"};
 	
@@ -67,10 +64,9 @@ public class NorbertTest {
 		
 	}
 	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) throws Exception{
+	@Test
+	public void testOrientDB() throws Exception {
+		
 		init();
 		createData();
 		insertCR();
@@ -86,8 +82,7 @@ public class NorbertTest {
 		browseByPermInDirectOrient();
 		
 		PortalConnectorFactory.destroy();
-		
-		System.exit(0);
+
 	}
 	
 	private static void createData() {

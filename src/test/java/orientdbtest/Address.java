@@ -1,4 +1,4 @@
-package test;
+package orientdbtest;
 
 import com.orientechnologies.orient.core.id.ORID;
 

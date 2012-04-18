@@ -1,4 +1,4 @@
-package test;
+package orientdbtest;
 
 import java.util.Collection;
 
