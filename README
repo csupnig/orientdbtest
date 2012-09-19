@@ -1,0 +1,6 @@
+This is a performance test to evaluate OrientDB.
+
+It compares the speed for inserts, updates and deletes against our existing repository 
+by generating a set of nested elements and quierying them.
+
+This is not to be used in any production environment!
